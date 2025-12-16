@@ -16,7 +16,15 @@ A full-stack application for creating custom canvas drawings and exporting them 
 
 ## 🚀 Live Demo
 
-Visit the live application: [GitHub Pages Demo](https://sksinha2410.github.io/canvas-to-pdf/)
+Visit the live application: [https://sksinha2410.github.io/canvas-to-pdf/](https://sksinha2410.github.io/canvas-to-pdf/)
+
+## 📸 Screenshots
+
+![Canvas Builder Interface](https://github.com/user-attachments/assets/bb17526d-3918-4550-8ea8-3d60af752433)
+*Main interface with canvas settings and element controls*
+
+![Canvas with Elements](https://github.com/user-attachments/assets/7e2026df-b65e-4f38-9f19-156636bf510c)
+*Canvas preview showing rectangle, circle, and text elements*
 
 ## 📋 Table of Contents
 
@@ -206,23 +214,26 @@ POST /api/canvas/clear
 
 ## 🌐 Deployment
 
-### GitHub Pages (Recommended for this project)
+### GitHub Pages (Recommended)
 
-1. Push your code to GitHub repository
+The application is designed to work seamlessly on GitHub Pages with client-side rendering.
 
-2. Enable GitHub Pages:
-   - Go to repository Settings
-   - Navigate to Pages section
+1. **Push your code to GitHub repository**
+
+2. **Enable GitHub Pages:**
+   - Go to repository Settings → Pages
    - Select source branch (usually `main` or `master`)
-   - Set folder to `/` (root) or `/docs` if you move files there
-   - Save
+   - Select folder: `/ (root)`
+   - Save and wait for deployment
 
-3. Access your site at:
+3. **Access your site at:**
    ```
-   https://[username].github.io/[repository-name]/public/
+   https://[username].github.io/[repository-name]/
    ```
 
-4. For cleaner URL, rename `public/index.html` to root or configure accordingly
+4. **No build process required** - The application uses vanilla JavaScript and runs entirely in the browser
+
+**Note:** The root directory contains `index.html`, `styles.css`, and `app.js` for GitHub Pages deployment. The `public/` directory contains the same files for local testing or server deployment.
 
 ### Vercel (Alternative)
 
