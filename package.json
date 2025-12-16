@@ -1,0 +1,27 @@
+{
+  "name": "canvas-to-pdf",
+  "version": "1.0.0",
+  "description": "A full-stack application for creating canvas drawings and exporting them as PDF",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "canvas",
+    "pdf",
+    "export",
+    "drawing"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "canvas": "^2.11.2",
+    "pdfkit": "^0.13.0",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
