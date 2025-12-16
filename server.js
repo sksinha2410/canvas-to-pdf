@@ -51,22 +51,22 @@ app.post('/api/canvas/add-element', (req, res) => {
   // Validate element based on type
   switch (element.type) {
     case 'rectangle':
-      if (!element.x || !element.y || !element.width || !element.height) {
+      if (element.x === undefined || element.y === undefined || element.width === undefined || element.height === undefined) {
         return res.status(400).json({ error: 'Rectangle requires x, y, width, and height' });
       }
       break;
     case 'circle':
-      if (!element.x || !element.y || !element.radius) {
+      if (element.x === undefined || element.y === undefined || element.radius === undefined) {
         return res.status(400).json({ error: 'Circle requires x, y, and radius' });
       }
       break;
     case 'text':
-      if (!element.x || !element.y || !element.text) {
+      if (element.x === undefined || element.y === undefined || !element.text) {
         return res.status(400).json({ error: 'Text requires x, y, and text content' });
       }
       break;
     case 'image':
-      if (!element.x || !element.y || !element.url) {
+      if (element.x === undefined || element.y === undefined || !element.url) {
         return res.status(400).json({ error: 'Image requires x, y, and url' });
       }
       break;

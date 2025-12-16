@@ -1,7 +1,7 @@
-// API Base URL - update this when deployed
+// API Base URL - automatically detects environment
 const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? 'http://localhost:3000'
-    : '';
+    ? `http://localhost:${window.location.port || 3000}`
+    : window.location.origin;
 
 let elementCount = 0;
 
