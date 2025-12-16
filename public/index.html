@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Builder - PDF Export</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Canvas Builder with PDF Export</h1>
+            <p>Create custom canvas drawings and export them as PDF</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Left Panel: Controls -->
+            <div class="controls-panel">
+                <section class="control-section">
+                    <h2>Canvas Settings</h2>
+                    <div class="form-group">
+                        <label for="canvasWidth">Width (px):</label>
+                        <input type="number" id="canvasWidth" value="800" min="100" max="2000">
+                    </div>
+                    <div class="form-group">
+                        <label for="canvasHeight">Height (px):</label>
+                        <input type="number" id="canvasHeight" value="600" min="100" max="2000">
+                    </div>
+                    <button onclick="initializeCanvas()" class="btn btn-primary">Initialize Canvas</button>
+                </section>
+
+                <section class="control-section">
+                    <h2>Add Elements</h2>
+                    
+                    <div class="element-tabs">
+                        <button class="tab-btn active" onclick="switchTab('rectangle')">Rectangle</button>
+                        <button class="tab-btn" onclick="switchTab('circle')">Circle</button>
+                        <button class="tab-btn" onclick="switchTab('text')">Text</button>
+                        <button class="tab-btn" onclick="switchTab('image')">Image</button>
+                    </div>
+
+                    <!-- Rectangle Form -->
+                    <div id="rectangle-form" class="element-form active">
+                        <h3>Add Rectangle</h3>
+                        <div class="form-group">
+                            <label>X Position:</label>
+                            <input type="number" id="rect-x" value="50">
+                        </div>
+                        <div class="form-group">
+                            <label>Y Position:</label>
+                            <input type="number" id="rect-y" value="50">
+                        </div>
+                        <div class="form-group">
+                            <label>Width:</label>
+                            <input type="number" id="rect-width" value="200">
+                        </div>
+                        <div class="form-group">
+                            <label>Height:</label>
+                            <input type="number" id="rect-height" value="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Fill Color:</label>
+                            <input type="color" id="rect-fill" value="#3498db">
+                        </div>
+                        <div class="form-group">
+                            <label>Stroke Color:</label>
+                            <input type="color" id="rect-stroke" value="#2c3e50">
+                        </div>
+                        <button onclick="addRectangle()" class="btn btn-success">Add Rectangle</button>
+                    </div>
+
+                    <!-- Circle Form -->
+                    <div id="circle-form" class="element-form">
+                        <h3>Add Circle</h3>
+                        <div class="form-group">
+                            <label>Center X:</label>
+                            <input type="number" id="circle-x" value="150">
+                        </div>
+                        <div class="form-group">
+                            <label>Center Y:</label>
+                            <input type="number" id="circle-y" value="150">
+                        </div>
+                        <div class="form-group">
+                            <label>Radius:</label>
+                            <input type="number" id="circle-radius" value="50">
+                        </div>
+                        <div class="form-group">
+                            <label>Fill Color:</label>
+                            <input type="color" id="circle-fill" value="#e74c3c">
+                        </div>
+                        <div class="form-group">
+                            <label>Stroke Color:</label>
+                            <input type="color" id="circle-stroke" value="#c0392b">
+                        </div>
+                        <button onclick="addCircle()" class="btn btn-success">Add Circle</button>
+                    </div>
+
+                    <!-- Text Form -->
+                    <div id="text-form" class="element-form">
+                        <h3>Add Text</h3>
+                        <div class="form-group">
+                            <label>X Position:</label>
+                            <input type="number" id="text-x" value="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Y Position:</label>
+                            <input type="number" id="text-y" value="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Text Content:</label>
+                            <input type="text" id="text-content" value="Hello, Canvas!" placeholder="Enter text">
+                        </div>
+                        <div class="form-group">
+                            <label>Font Size:</label>
+                            <input type="number" id="text-size" value="24">
+                        </div>
+                        <div class="form-group">
+                            <label>Font Family:</label>
+                            <select id="text-font">
+                                <option value="Arial">Arial</option>
+                                <option value="Helvetica">Helvetica</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Courier">Courier</option>
+                                <option value="Verdana">Verdana</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Text Color:</label>
+                            <input type="color" id="text-color" value="#2c3e50">
+                        </div>
+                        <button onclick="addText()" class="btn btn-success">Add Text</button>
+                    </div>
+
+                    <!-- Image Form -->
+                    <div id="image-form" class="element-form">
+                        <h3>Add Image</h3>
+                        <div class="form-group">
+                            <label>X Position:</label>
+                            <input type="number" id="image-x" value="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Y Position:</label>
+                            <input type="number" id="image-y" value="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Image URL:</label>
+                            <input type="text" id="image-url" placeholder="https://example.com/image.png">
+                        </div>
+                        <div class="form-group">
+                            <label>Width (optional):</label>
+                            <input type="number" id="image-width" placeholder="Auto">
+                        </div>
+                        <div class="form-group">
+                            <label>Height (optional):</label>
+                            <input type="number" id="image-height" placeholder="Auto">
+                        </div>
+                        <button onclick="addImage()" class="btn btn-success">Add Image</button>
+                    </div>
+                </section>
+
+                <section class="control-section">
+                    <h2>Actions</h2>
+                    <button onclick="refreshPreview()" class="btn btn-secondary">🔄 Refresh Preview</button>
+                    <button onclick="clearCanvas()" class="btn btn-warning">🗑️ Clear Canvas</button>
+                    <button onclick="exportPDF()" class="btn btn-export">📄 Export as PDF</button>
+                </section>
+
+                <section class="control-section">
+                    <h2>Canvas Info</h2>
+                    <div id="canvas-info">
+                        <p>Dimensions: <span id="info-dimensions">800 x 600</span></p>
+                        <p>Elements: <span id="info-elements">0</span></p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Panel: Preview -->
+            <div class="preview-panel">
+                <h2>Canvas Preview</h2>
+                <div class="preview-container">
+                    <img id="canvas-preview" src="" alt="Canvas preview will appear here">
+                    <div id="preview-placeholder" class="placeholder">
+                        <p>👆 Initialize canvas and add elements to see preview</p>
+                    </div>
+                </div>
+                <div id="status-message" class="status-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jsPDF library for client-side PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" 
+            integrity="sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb" 
+            crossorigin="anonymous"></script>
+    
+    <!-- Application script -->
+    <script src="app.js"></script>
+</body>
+</html>
